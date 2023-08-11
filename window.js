@@ -9,7 +9,9 @@ const createWindow = () => {
     y: 100,
     // 预加载脚本
     webPreferences: {
-      preload: path.resolve(__dirname, 'preload.js')
+      preload: path.resolve(__dirname, 'preload.js'),
+      // 当不进行隔离时，预加载脚本 preload.js 的内容可直接被渲染进程调用
+      // contextIsolation: false
     }
   })
 
