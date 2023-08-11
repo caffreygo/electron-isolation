@@ -8,3 +8,8 @@ contextBridge.exposeInMainWorld('api', {
     ipcRenderer.send('setWindowPosition', options)
   }
 })
+
+ipcRenderer.on('toPreload', (event, value) => {
+  console.log('event on', value)
+  document.querySelector('h1').innerText = value
+})

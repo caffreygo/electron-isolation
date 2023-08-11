@@ -1,9 +1,10 @@
 const { app, ipcMain, BrowserWindow, screen } = require('electron')
 const { createWindow } = require("./window")
-require('./menu')
+const { createMenu } = require('./menu')
 
 app.whenReady().then(() => {
-  createWindow()
+  const win = createWindow()
+  createMenu(win)
 })
 
 // 行为设置：Mac 关闭不退出（保留在 docker 栏），再点击时开启
