@@ -6,10 +6,10 @@ const { contextBridge, ipcRenderer } = require('electron')
 contextBridge.exposeInMainWorld('api', {
   setWindowPosition: (options) => {
     ipcRenderer.send('setWindowPosition', options)
+  },
+  menuEvent: (callback) => {
+    ipcRenderer.on('toPreload', (event, value) => {
+      callback(value)
+    })
   }
-})
-
-ipcRenderer.on('toPreload', (event, value) => {
-  console.log('event on', value)
-  document.querySelector('h1').innerText = value
 })
