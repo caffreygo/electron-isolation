@@ -1,4 +1,4 @@
-const { BrowserWindow } = require("electron")
+const { BrowserWindow, screen } = require("electron")
 const path = require('path')
 
 const createWindow = () => {
@@ -20,15 +20,16 @@ const createWindow = () => {
   mainWindow.webContents.openDevTools()
   mainWindow.loadFile(path.resolve(__dirname, 'index.html'))
 
-  // setTimeout(() => {
-  //   mainWindow.center()
-  //   mainWindow.setBounds({
-  //     width: 600,
-  //     height: 600,
-  //     x: 0,
-  //     y: 0
-  //   }, true)
-  // }, 2000)
+  setTimeout(() => {
+    const { width } = screen.getPrimaryDisplay().workAreaSize
+    // mainWindow.center()
+    mainWindow.setBounds({
+      width: 800,
+      height: 800,
+      x: width / 2 - 400,
+      y: 100
+    }, true)
+  }, 2000)
 
   return mainWindow
 }
