@@ -10,9 +10,10 @@ const createWindow = () => {
     // 预加载脚本
     webPreferences: {
       preload: path.resolve(__dirname, 'preload.js'),
+      sandbox: false  // 预加载脚本可以使用 fs、electron.shell 等，渲染进程不能使用
       // contextIsolation: false 当不进行隔离时，预加载脚本 preload.js 的内容可直接被渲染进程调用
-      // nodeIntegration: true 当开启此配置，预加载脚本可以使用 fs 这些 node 模块
-      // 当两个配置都设置时，渲染脚本也可以使用 fs 这些 node 模块
+      // nodeIntegration: true 当开启此配置，预加载脚本可以使用 fs、electron.shell
+      // 当两个配置都设置时，渲染脚本也可以使用
     }
   })
 
