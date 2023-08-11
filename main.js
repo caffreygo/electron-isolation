@@ -1,5 +1,6 @@
 const { app, ipcMain, BrowserWindow, screen } = require('electron')
 const { createWindow } = require("./window")
+require('./menu')
 
 app.whenReady().then(() => {
   createWindow()
