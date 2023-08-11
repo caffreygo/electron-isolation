@@ -11,3 +11,8 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('h1').innerHTML = value
   })
 })
+
+
+window.addEventListener('contextmenu', () => {
+  window.api.openContextMenu()
+})

@@ -7,6 +7,9 @@ contextBridge.exposeInMainWorld('api', {
   setWindowPosition: (options) => {
     ipcRenderer.send('setWindowPosition', options)
   },
+  openContextMenu: () => {
+    ipcRenderer.send('mainPopMenu')
+  },
   menuEvent: (callback) => {
     ipcRenderer.on('toPreload', (event, value) => {
       callback(value)
